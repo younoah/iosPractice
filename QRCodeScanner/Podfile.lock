@@ -1,0 +1,16 @@
+PODS:
+  - QRCodeReader.swift (10.1.0)
+
+DEPENDENCIES:
+  - QRCodeReader.swift (~> 10.1.0)
+
+SPEC REPOS:
+  trunk:
+    - QRCodeReader.swift
+
+SPEC CHECKSUMS:
+  QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
+
+PODFILE CHECKSUM: 3b58ff8327c67bce5cf0450433c919a9043585f6
+
+COCOAPODS: 1.9.3
