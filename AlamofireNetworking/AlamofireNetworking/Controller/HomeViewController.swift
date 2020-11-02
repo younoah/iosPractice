@@ -7,8 +7,9 @@
 
 import UIKit
 import Toast_Swift
+import Alamofire
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     
     @IBOutlet weak var segment: UISegmentedControl!
@@ -102,7 +103,45 @@ extension HomeViewController {
     
     // 검색 버튼 클릭
     @IBAction func touchUpButton(_ sender: UIButton) {
-        pushViewController()
+//        pushViewController()
+        
+        // 네트워크 요청
+//        let url = API.baseURL + "search/photos"
+        
+        guard let userInput = self.searchBar.text else { return }
+        // 쿼리, 키/밸류 형식의 딕셔너리
+//        let queryParam = ["query" : userInput, "client_id" : API.clientID]
+//
+//        AF.request(url,
+//                   method: .get,
+//                   parameters: queryParam).responseJSON(completionHandler: { response in
+//                    debugPrint(response)
+//        })
+        
+        var urlToCall : URLRequestConvertible?
+
+        switch segment.selectedSegmentIndex {
+        case 0:
+            urlToCall = MyRouter.searchPhotos(term: userInput)
+        case 1:
+            urlToCall = MyRouter.searchUsers(term: userInput)
+        default:
+            print("default")
+        }
+        
+        guard let urlConvertible = urlToCall else { return }
+        
+        // .validate()를 추가하면 retry()가 작동된다.
+        AlamofireManager
+            .shared
+            .session
+            .request(urlConvertible)
+            .validate(statusCode: 200...400) // status 코드가 200~400일때만 허용한다. 이범위가 아니면 에러가 뜬다.
+            .responseJSON(completionHandler: { response in
+                debugPrint(response)
+        })
+        
+        
     }
     
     // 세그먼트 인덱스에 따른 세그 ID 설정후 세그를 통한 화면 이동
@@ -132,7 +171,6 @@ extension HomeViewController {
                 print("이만큼 덮었다. distance : \(distance)")
                 self.view.frame.origin.y = distance - searchButton.frame.height
             }
-            
         }
         
         
