@@ -17,6 +17,9 @@
 		8D484CD42548305B00A1AA8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D484CD32548305B00A1AA8A /* Assets.xcassets */; };
 		8D484CD72548305B00A1AA8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D484CD52548305B00A1AA8A /* LaunchScreen.storyboard */; };
 		8D484CE12548311E00A1AA8A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8D484CE02548311E00A1AA8A /* Alamofire */; };
+		8D93F1AA25517A81005B70AD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D93F1A925517A81005B70AD /* Photo.swift */; };
+		8D93F1AF25517AD9005B70AD /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D93F1AE25517AD9005B70AD /* MyError.swift */; };
+		8D93F1BA25518ADD005B70AD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D93F1B925518ADD005B70AD /* User.swift */; };
 		8DA6333E2550500C00E945D3 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA6333D2550500C00E945D3 /* AlamofireManager.swift */; };
 		8DA63341255050EA00E945D3 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA63340255050EA00E945D3 /* BaseInterceptor.swift */; };
 		8DA633442550563000E945D3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA633432550563000E945D3 /* Logger.swift */; };
@@ -36,6 +39,9 @@
 		8D484CD32548305B00A1AA8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D484CD62548305B00A1AA8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D484CD82548305B00A1AA8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D93F1A925517A81005B70AD /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		8D93F1AE25517AD9005B70AD /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
+		8D93F1B925518ADD005B70AD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8DA6333D2550500C00E945D3 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		8DA63340255050EA00E945D3 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		8DA633432550563000E945D3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2C01F8254C5A6100F287ED /* Constants.swift */,
+				8D93F1AE25517AD9005B70AD /* MyError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 		8D484CC92548305A00A1AA8A /* AlamofireNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				8D93F1A825517A69005B70AD /* Model */,
 				8DA6333C25504FF500E945D3 /* API */,
 				8D2C01F7254C5A4B00F287ED /* Utils */,
 				8D484CD82548305B00A1AA8A /* Info.plist */,
@@ -119,6 +127,15 @@
 				8D484CD52548305B00A1AA8A /* LaunchScreen.storyboard */,
 			);
 			path = AlamofireNetworking;
+			sourceTree = "<group>";
+		};
+		8D93F1A825517A69005B70AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D93F1A925517A81005B70AD /* Photo.swift */,
+				8D93F1B925518ADD005B70AD /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8DA6333C25504FF500E945D3 /* API */ = {
@@ -261,16 +278,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D93F1AA25517A81005B70AD /* Photo.swift in Sources */,
 				8DA633472550590300E945D3 /* Router.swift in Sources */,
 				8DDF6A2E254C2DF100F9C89B /* PhotoCollectionViewController.swift in Sources */,
 				8D484CCF2548305A00A1AA8A /* HomeViewController.swift in Sources */,
 				8DA63341255050EA00E945D3 /* BaseInterceptor.swift in Sources */,
 				8DDF6A2A254C2DE000F9C89B /* UserListViewController.swift in Sources */,
+				8D93F1BA25518ADD005B70AD /* User.swift in Sources */,
 				8D484CCB2548305A00A1AA8A /* AppDelegate.swift in Sources */,
 				8DA633442550563000E945D3 /* Logger.swift in Sources */,
 				8DA6333E2550500C00E945D3 /* AlamofireManager.swift in Sources */,
 				8D484CCD2548305A00A1AA8A /* SceneDelegate.swift in Sources */,
 				8D2C01FD254C5D4A00F287ED /* BaseViewController.swift in Sources */,
+				8D93F1AF25517AD9005B70AD /* MyError.swift in Sources */,
 				8D2C01F9254C5A6100F287ED /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

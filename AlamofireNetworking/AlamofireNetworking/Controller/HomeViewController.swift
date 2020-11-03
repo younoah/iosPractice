@@ -122,24 +122,42 @@ extension HomeViewController {
 
         switch segment.selectedSegmentIndex {
         case 0:
-            urlToCall = MyRouter.searchPhotos(term: userInput)
+//            urlToCall = MyRouter.searchPhotos(term: userInput)
+            AlamofireManager
+                .shared
+                .getPhotos(searchTerm: userInput, completion: { [weak self] result in
+                    // 클로저 ARC
+                    // 오토매틱 레퍼런스 카운트, 자동 메모리사용수 계산
+                    // stack , heap 메모리 영역, 클래스, 클로저 등이 사용
+                    // self는 메모리 카운트를 증가시킨다.
+                    // weak self를 통해 메모리를 가지고 있는 것을 방지할 수 있다.
+                    // 다음과 같이 self.메소드 등 self를 사용해야 하는 경우 weak self로 메모리에 계속 잡고 두고 있는 것을 방지한다.
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let fetchedPhotos):
+                        print("HomeViewController - getPhotos.success - fetchedPhotos.count : \(fetchedPhotos.count)")
+                    case .failure(let error):
+                        print("HomeViewController - getPhtos.failure - error : \(error.rawValue)")
+                        self.view.makeToast("\(error.rawValue)", duration: 2.0, position: .center)
+                    }
+                            
+            })
         case 1:
             urlToCall = MyRouter.searchUsers(term: userInput)
         default:
             print("default")
         }
         
-        guard let urlConvertible = urlToCall else { return }
-        
-        // .validate()를 추가하면 retry()가 작동된다.
-        AlamofireManager
-            .shared
-            .session
-            .request(urlConvertible)
-            .validate(statusCode: 200...400) // status 코드가 200~400일때만 허용한다. 이범위가 아니면 에러가 뜬다.
-            .responseJSON(completionHandler: { response in
-                debugPrint(response)
-        })
+//        guard let urlConvertible = urlToCall else { return }
+//        // .validate()를 추가하면 retry()가 작동된다.
+//        AlamofireManager
+//            .shared
+//            .session
+//            .request(urlConvertible)
+//            .validate(statusCode: 200...400) // status 코드가 200~400일때만 허용한다. 이범위가 아니면 에러가 뜬다.
+//            .responseJSON(completionHandler: { response in
+//                debugPrint(response)
+//        })
         
         
     }
